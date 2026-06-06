@@ -1,30 +1,30 @@
-let inputBox = document.querySelector("#inputbox");
-let buttons = document.querySelectorAll(".btn");
+let input = document.querySelector("#inputbox")
 
-let string = "";
-buttons.forEach(button => {
-      button.addEventListener("click", (e) => {
-       let value = e.target.innerText;
-       if(value === "AC"){
-         string = "";
-         inputBox.value = string;
-       }
 
-       else if(value === "="){
-         string = eval(string);
-         inputBox.value = string;
-       }
+function appendvalue(value){
+input.value+=value
+}
 
-       else if(value === "DEC"){
-         string = string.slice(0, -1);
-         inputBox.value = string;
-       }
+function calculate(){
+  const result=eval(input.value)
+  input.value=result
 
-       else{
-         string += value;
-         inputBox.value = string;
-       }
-      });
-});
+}
+
+function Delete(){
+  input.value=""
+}
+
+function onceRemove(){
+  const result2 =input.value.slice(0,-1) 
+  input.value=result2
+}
+
+function percentage(){
+  const answer = (eval(input.value))/100
+  input.value = answer
+}
+
+
 
 

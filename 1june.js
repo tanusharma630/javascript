@@ -132,3 +132,35 @@
 // const withdraw = createATM()
 // console.log(withdraw(50))
 
+// function makeCoffeeTracker(maxCups){
+//     return function(numofCups){
+//         let Remaining;
+//         if (numofCups < maxCups){
+//             return Remaining = maxCups - numofCups
+//             return  Remaining;
+//         }else if(numofCups > maxCups){
+//            return "out of limit"
+//         }else{
+//             return maxCups
+//         }
+//     }
+// }
+
+// const limit = makeCoffeeTracker(10)
+// console.log(limit(11));
+
+
+// function makeTicketBooth(basePrice){
+//     return function(weekend){
+//         if(basePrice === weekend ){
+//             return basePrice += 5
+//         }else if(basePrice != weekend){
+//             return basePrice;
+//         }else{
+//             return "inavlid days!"
+//         }
+//     }
+// }
+
+// const movieTickets = makeTicketBooth(12);
+// console.log(movieTickets(1))

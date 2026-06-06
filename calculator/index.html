@@ -9,28 +9,28 @@
 <body>
     <main>
         <div class="container">
-            <input type="text" placeholder="0" id="inputbox">
+            <input type="text" placeholder="00" id="inputbox">
         <div class="buttons">
-            <button class="btn green">AC</button>
-            <button class="btn green">DEC</button>
-            <button class="btn green">%</button>
-            <button class="btn green">/</button>
-            <button class="btn">7</button>
-            <button class="btn">8</button>
-            <button class="btn">9</button>
-            <button class="btn green">*</button>
-            <button class="btn">4</button>
-            <button class="btn">5</button>
-            <button class="btn">6</button>
-            <button class="btn green">-</button>
-            <button class="btn">1</button>
-            <button class="btn">2</button>
-            <button class="btn">3</button>
-            <button class="btn green">+</button>
-            <button class="btn">00</button>
-            <button class="btn">0</button>
-            <button class="btn">.</button>
-            <button class="btn cadetblue">=</button>
+            <button class="btn green" onclick="Delete()">AC</button>
+            <button class="btn green" onclick="onceRemove()">DEC</button>
+            <button class="btn green" onclick="percentage()">%</button>
+            <button class="btn green" onclick="appendvalue('/')">/</button>
+            <button class="btn" onclick="appendvalue(7)">7</button>
+            <button class="btn" onclick="appendvalue(8)">8</button>
+            <button class="btn" onclick="appendvalue(9)">9</button>
+            <button class="btn green" onclick="appendvalue('*')">*</button>
+            <button class="btn" onclick="appendvalue(4)">4</button>
+            <button class="btn" onclick="appendvalue(5)">5</button>
+            <button class="btn"onclick="appendvalue(6)">6</button>
+            <button class="btn green" onclick="appendvalue('-')">-</button>
+            <button class="btn" onclick="appendvalue(1)">1</button>
+            <button class="btn" onclick="appendvalue(2)">2</button>
+            <button class="btn" onclick="appendvalue(3)">3</button>
+            <button class="btn green" onclick="appendvalue('+')">+</button>
+            <button class="btn" onclick="appendvalue(',')">,</button>
+            <button class="btn" onclick="appendvalue(0)">0</button>
+            <button class="btn"onclick="appendvalue(.)">.</button>
+            <button class="btn cadetblue" onclick="calculate()">=</button>
         </div>
         </div>
     </main>
