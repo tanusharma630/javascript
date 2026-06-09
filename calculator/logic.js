@@ -8,7 +8,6 @@ input.value+=value
 function calculate(){
   const result=eval(input.value)
   input.value=result
-
 }
 
 function Delete(){
@@ -24,7 +23,4 @@ function percentage(){
   const answer = (eval(input.value))/100
   input.value = answer
 }
-
-
-
 
