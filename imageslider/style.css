@@ -1,0 +1,34 @@
+
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+ 
+.box{
+    position: relative;
+}
+
+.box img{
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+}
+
+button{
+    position: absolute;
+    top: 50%;
+    padding: 10px 15px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+#prev{
+    left: 10px;
+}
+#next{
+    right :10px
+}
+

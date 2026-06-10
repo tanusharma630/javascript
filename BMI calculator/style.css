@@ -7,8 +7,8 @@ body{
 }
 
 .container{
-    width: 250px;
-    height: 350px;
+    width: 280px;
+    height: 370px;
     padding: 15px;
     background-color: rgb(173, 127, 216);
     border-radius: 20px;
@@ -50,4 +50,17 @@ button{
     color: rgb(255, 255, 255);
     box-shadow: 0 0 1rem rgba(227, 228, 226, 0.3);
     width: 200px;
+}
+
+
+#result{
+     margin-top: 10px;
+    padding: 9px;
+    font-size: 17px;
+    border-radius: 15px;
+    border: none;
+    color: rgb(182, 93, 227);
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 1rem rgba(227, 228, 226, 0.3);
+    width: 230px;
 }
