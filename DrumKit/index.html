@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>DRUM KIT</h1>
+
+<div class="container">
+    <div data-key="65" class="key">
+        <kbd>A</kbd>
+        <span class="sound">clap</span>
+    </div>
+    <div data-key="66" class="key">
+        <kbd>B</kbd>
+        <span class="sound">hihat</span>
+    </div>
+    <div  data-key="68" class="key">
+        <kbd>D</kbd>
+        <span class="sound">kick</span>
+    </div>
+    <div  data-key="67" class="key">
+        <kbd>C</kbd>
+        <span class="sound">openhat</span>
+    </div>
+    <div  data-key="74" class="key">
+        <kbd>J</kbd>
+        <span class="sound">snare</span>
+    </div>    
+    <div  data-key="75" class="key">  
+        <kbd>K</kbd>
+        <span class="sound">tink</span>
+    </div>  
+    <div  data-key="76" class="key">
+        <kbd>L</kbd>
+        <span class="sound">tom</span>
+    </div>
+
+</div>
+
+    <div>
+        <audio data-key = "65" src="music/clap.wav"></audio>
+        <audio data-key = "66" src="music/hihat.wav"></audio>
+        <audio data-key = "68" src="music/kick.wav"></audio>
+        <audio data-key = "67" src="music/openhat.wav"></audio>
+        <audio data-key = "74" src="music/snare.wav"></audio>
+        <audio data-key = "75" src="music/tink.wav"></audio>
+        <audio data-key = "76" src="music/tom.wav"></audio>
+    </div>
+    <script src="logic.js"></script>
+
+</body>
+</html>

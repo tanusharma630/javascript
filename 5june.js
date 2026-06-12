@@ -27,10 +27,11 @@
 // substractTimer()
 
 
-let count = 0;
-
-setInterval(() => {
-    count++;
-    console.log(`Count: ${count}`);
+let id = setInterval(() => {
+    console.log("Running...");
 }, 1000);
 
+setTimeout(() => {
+    clearInterval(id);
+    console.log("Stopped");
+}, 5000);
