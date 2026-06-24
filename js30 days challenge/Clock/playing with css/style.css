@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(219, 130, 145);
+    display: block;
+    justify-self: center;
+}
+
+.img{
+    border-radius: 20px;
+    padding: var(--spacing);
+}
+
+.blur{
+    opacity: ;
+}
+

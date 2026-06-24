@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+        <div class="output">
+            <input type="text" id="password" readonly>
+            <button id="copyBtn">copy</button>
+        </div>
+
+        <div class="setting">
+            <label for="range">password length: <span id="lengthValue">12</span></label>
+            <input type="range" id="length" min="5" max="32" value="12">
+        </div>
+        <div class="setting">
+            <label for="checkbox">Include Uppercase:</label>
+            <input type="checkbox" id="Uppercase" >
+        </div>
+        <div class="setting">
+            <label for="checkbox">Include lowercase:</label>
+            <input type="checkbox" id="lowercase" >
+        </div>
+        <div class="setting">
+            <label for="checkbox">Include Numbers:</label>
+            <input type="checkbox" id="numbers" >
+        </div>
+        <div class="setting">
+            <label for="checkbox">Include Symbols</label>
+            <input type="checkbox" id="symbols" >
+        </div>
+        <button id="Generator">
+            Generate password
+        </button>
+    </div>
+    <script src="logic.js"></script>
+</body>
+</html>
