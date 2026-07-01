@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce Cart</title>
+</head>
+<body>
+
+    <header>
+        <h1><span><img src="https://cdn-icons-png.flaticon.com/128/18775/18775887.png" class="image"></span>Aanvi's Cart</h1>
+
+        <div class="controls">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="Search products..."
+            >
+
+            <select id="category">
+                <option value="All">All Categories</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Accessories">Accessories</option>
+            </select>
+
+        </div>
+    </header>
+
+    <main>
+
+
+        <section class="products">
+
+            <h2>Products</h2>
+
+            <div id="productContainer" class="product-grid">
+
+            </div>
+
+        </section>
+
+
+        <aside class="cart">
+
+            <h2>Shopping Cart</h2>
+
+            <div id="cartContainer">
+
+                <p>Your cart is empty.</p>
+
+            </div>
+
+            <div class="cart-summary">
+
+                <h3>Total: ₹<span id="total">0</span></h3>
+
+                <button id="clearCart">
+                    Clear Cart
+                </button>
+
+            </div>
+
+        </aside>
+
+    </main>
+
+
+
+    <style>
+
+        .image{
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            top:10px;
+        }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f5f6;
+    color:#282c3f;
+    padding:35px;
+    overflow-x:hidden;
+}
+
+
+body::after{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#ff3f6c25,transparent 70%);
+    top:-250px;
+    left:-150px;
+    z-index:-2;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#ff3f6c25,transparent 70%);
+    top:-250px;
+    right:-150px;
+    z-index:-2;
+}
+
+
+header{
+    background:#fff;
+    border-radius:18px;
+    padding:20px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:35px;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+header h1{
+    color:#ff3f6c;
+    font-size:2rem;
+}
+
+.controls{
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+#search{
+    width:340px;
+    padding:15px 22px;
+    border:2px solid transparent;
+    border-radius:50px;
+    background:linear-gradient(#fff,#fff) padding-box,
+               linear-gradient(135deg,#ff3f6c,#ff9f43) border-box;
+    font-size:15px;
+    color:#282c3f;
+    box-shadow:0 12px 25px rgba(0,0,0,.08);
+    transition:.35s ease;
+}
+
+#search::placeholder{
+    color:#999;
+}
+
+#search:focus{
+    transform:translateY(-3px);
+    box-shadow:0 18px 35px rgba(255,63,108,.22);
+}
+
+#category{
+    padding:15px 30px; 
+    min-width:fit-content;
+    border:none;
+    border-radius:50px;
+    background:#ff3f6c;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(255,63,108,.35);
+    transition:.35s;
+}
+
+#category:hover{
+    transform:translateY(-3px);
+    background:#e73360;
+}
+
+
+main{
+    display:grid;
+    grid-template-columns:3fr 1fr;
+    gap:30px;
+}
+
+
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;
+}
+
+.product-card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.45s;
+    transform-style:preserve-3d;
+}
+
+.product-card:hover{
+    transform:
+        perspective(900px)
+        rotateX(8deg)
+        rotateY(-8deg)
+        translateY(-12px);
+    box-shadow:0 30px 60px rgba(201, 29, 29, 0.18);
+}
+
+.product-card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+    transition:.6s;
+}
+
+.product-card:hover img{
+    transform:scale(1.1);
+}
+
+.product-card h3,
+.product-card p,
+.product-card h4{
+    padding:0 18px;
+}
+
+.product-card h3{
+    margin-top:18px;
+}
+
+.product-card p{
+    color:#777;
+    margin:8px 0;
+}
+
+.product-card h4{
+    color:#ff3f6c;
+    font-size:1.2rem;
+    margin-bottom:18px;
+}
+
+.product-card button{
+    width:calc(100% - 36px);
+    margin:0 18px 18px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:#ff3f6c;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.product-card button:hover{
+    transform:translateY(-4px) scale(1.03);
+    background:#e73360;
+    box-shadow:0 15px 30px rgba(255,63,108,.35);
+}
+
+
+
+.cart{
+    background:linear-gradient(180deg,#ffffff,#fdf2f5);
+    border-radius:24px;
+    padding:22px;
+    position:sticky;
+    top:25px;
+    box-shadow:
+    0 20px 50px rgba(0,0,0,.08),
+    inset 0 1px 0 rgba(255,255,255,.7);
+    border:1px solid rgba(255,63,108,.15);
+    height:fit-content;
+}
+
+.cart h2{
+    font-size:1.6rem;
+    color:#ff3f6c;
+    margin-bottom:22px;
+}
+
+.cart-value{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    background:#fff;
+    padding:14px;
+    border-radius:18px;
+    margin-bottom:18px;
+    transition:.35s;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+}
+
+.cart-value:hover{
+    transform:translateX(8px);
+    box-shadow:0 18px 40px rgba(255,63,108,.18);
+}
+
+.cart-value img{
+    width:80px;
+    height:80px;
+    border-radius:14px;
+    object-fit:cover;
+}
+
+.cart-info{
+    flex:1;
+}
+
+.cart-info h4{
+    margin-bottom:5px;
+    color:#282c3f;
+}
+
+.cart-info p{
+    color:#ff3f6c;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.quantity{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.quantity button{
+    width:32px;
+    height:32px;
+    border:none;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ff3f6c,#ff7b54);
+    color:white;
+    cursor:pointer;
+    font-size:18px;
+    transition:.35s;
+}
+
+.quantity button:hover{
+    transform:rotate(180deg) scale(1.1);
+}
+
+.quantity span{
+    font-weight:700;
+    min-width:20px;
+    text-align:center;
+}
+
+.remove-btn{
+    background:transparent;
+    border:2px solid #ff3f6c;
+    color:#ff3f6c;
+    padding:8px 14px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:.35s;
+}
+
+.remove-btn:hover{
+    background:#ff3f6c;
+    color:#fff;
+}
+
+.cart-summary{
+    margin-top:25px;
+    padding-top:22px;
+    border-top:2px dashed #ffd0dc;
+}
+
+.cart-summary h3{
+    color:#282c3f;
+    margin-bottom:18px;
+}
+
+#clearCart{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#282c3f,#40445a);
+    color:white;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.35s;
+}
+
+#clearCart:hover{
+    background:linear-gradient(135deg,#ff3f6c,#ff7b54);
+    transform:translateY(-3px);
+    box-shadow:0 15px 30px rgba(255,63,108,.25);
+}
+
+
+@media (max-width:1024px){
+
+    body{
+        padding:25px;
+    }
+
+    main{
+        grid-template-columns:1fr;
+    }
+
+    .cart{
+        position:static;
+        margin-top:30px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    }
+
+}
+
+
+@media (max-width:768px){
+
+    body{
+        padding:18px;
+    }
+
+    header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .controls{
+        width:100%;
+        flex-direction:column;
+    }
+
+    #search,
+    #category{
+        width:100%;
+    }
+
+    header h1{
+        font-size:1.8rem;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+        gap:20px;
+    }
+
+}
+
+
+@media (max-width:576px){
+
+    body{
+        padding:15px;
+    }
+
+    header{
+        padding:18px;
+        border-radius:16px;
+    }
+
+    header h1{
+        font-size:1.5rem;
+    }
+
+    .products h2,
+    .cart h2{
+        font-size:1.3rem;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .product-card{
+        max-width:380px;
+        margin:auto;
+    }
+
+    .product-card img{
+        height:230px;
+    }
+
+    .cart{
+        padding:18px;
+    }
+
+    .cart-value{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .cart-value img{
+        width:100px;
+        height:100px;
+    }
+
+    .cart-info{
+        width:100%;
+    }
+
+    .quantity{
+        justify-content:center;
+    }
+
+    .remove-btn{
+        width:100%;
+        margin-top:10px;
+    }
+
+    #clearCart{
+        width:100%;
+    }
+
+}
+
+
+
+@media (max-width:380px){
+
+    body{
+        padding:12px;
+    }
+
+    #search{
+        font-size:14px;
+        padding:13px 16px;
+    }
+
+    #category{
+        font-size:14px;
+        padding:13px 16px;
+    }
+
+    .product-card{
+        padding:15px;
+    }
+
+    .product-card h3{
+        font-size:1rem;
+    }
+
+    .product-card h4{
+        font-size:1.1rem;
+    }
+
+}
+
+
+</style>
+
+    <script>
+        const products=[
+    {
+        id:1,
+        name:"Shoes",
+        price:4000,
+        category:"Fashion",
+        image:"https://www.gfabify.in/cdn/shop/files/1-main-calliton-summer-slipper-man-leisure-shoes-man-sneakers-fashion-breathable-mixed-colors-white-lace-up-athletic-flat-shoes-2023_540x_0e5c626d-209e-49e7-a871-4541883ff5be.webp?v=1712319918"
+
+        
+    },
+    {
+          id: 2,
+        name: "Headphones",
+        price: 3500,
+        category: "Electronics",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzlkcJXghO2qKl0mrs4hY6hPYmMjC9fv7_E_Ag1cnbq9ghM4Fa08Pek6Un&s=10"
+
+    },
+
+    {
+        id: 5,
+        name: "Watch",
+        price: 4000,
+        category: "Accessories",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIA1JBErNIRFJPwSIepDjpV9CUTcgDC2AnCbbWALXeu2_O_8A3_2s93Y-V&s=10"
+    },
+
+    {
+        id: 3,
+        name: "Laptop",
+        price: 55000,
+        category: "Electronics",
+        image: "https://i.dell.com/is/image/DellContent/content/dam/images/products/laptops-and-2-in-1s/dell-laptop/db14250-non-touch/dell-db14250nt-laptop-c-22040rf115-bl-fpr.psd?wid=1200&hei=630&fmt=png-alpha"
+
+    },
+    {
+        id: 4,
+        name: "Backpack",
+        price: 1800,
+        category: "Accessories",
+        image: "https://icon.in/cdn/shop/files/1_427a8665-919f-4581-8b61-313c46cae7e7.jpg?v=1735287670",
+        quantity:1
+
+    },
+    
+    {
+        id: 6,
+        name: "Lipgloss",
+        price: 4000,
+        category: "Makeup",
+        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNmC8KpYy7vKcY5HJzQDT9TaCUYjnWa1NGXPG9PaXmeU885FPCt0XdfZU&s=10"
+    },
+    
+]
+
+
+const productContainer=document.getElementById("productContainer");
+const cartContainer=document.getElementById("cartContainer");
+const searchInput=document.getElementById("search");
+const categorySelect=document.getElementById("category");
+const total =document.getElementById("total");
+const clearCart=document.getElementById("clearCart");
+let cart = JSON.parse(localStorage.getItem("cart"))|| [];
+
+function displayProducts(productsList){
+
+productContainer.innerHTML=""
+productsList.forEach(product => {
+    productContainer.innerHTML+=`
+    <div class="product-card">
+    <img src="${product.image}" alt="${product.name}">
+    <h3>${product.name}</h3>
+    <p>${product.category}</p>
+    <h4>₹${product.price}</h4>
+    <button onclick=addToCart(${product.id})>Add to Cart</button>
+    </div>
+    `
+    
+});
+
+}
+
+function addToCart(id){
+
+const product=products.find(item=>item.id===id);
+const existingProduct=cart.find(item=>item.id===id);
+
+if(existingProduct){
+    existingProduct.quantity++;
+}else{
+    cart.push({
+        ...product,
+        quantity: 1
+    });
+}
+localStorage.setItem("cart",JSON.stringify(cart));
+renderCart()
+}
+
+
+
+searchInput.addEventListener("input",filterProducts);
+categorySelect.addEventListener("change",filterProducts)
+
+function filterProducts(){
+    const searchText=searchInput.value.toLowerCase();
+    const selectedCategory=categorySelect.value;
+    const filtered=products.filter(product=>{
+        const matchesSearch=product.name.toLowerCase().includes(searchText);
+        const matchCategory=selectedCategory==="All"||product.category===selectedCategory;
+
+        return matchesSearch && matchCategory
+
+    });
+
+    displayProducts(filtered);
+
+
+
+}
+
+displayProducts(products)
+renderCart()
+
+
+function renderCart(){
+cartContainer.innerHTML="";
+if(cart.length===0){
+    cartContainer.innerHTML="<p>no items in cart</p>";
+    total.textContent=0
+    return;
+}
+
+let grandTotal=0;
+cart.forEach(item=>{
+grandTotal+=item.price*item.quantity;
+cartContainer.innerHTML+=
+`<div class="cart-value">
+<img src="${item.image}" alt="${item.name}">
+<div class="cart-info">
+<h4>${item.name}</h4>
+<p>${item.price}</p>
+<div class="quantity">
+<button onclick="decreaseQuantity(${item.id})">-</button>
+<span>${item.quantity}</span>
+<button onclick="increaseQuantity(${item.id})">+</button>
+
+</div>
+
+
+</div>
+
+<button class="remove-btn" onclick="removeItem(${item.id})">
+Remove
+</button>
+</div>
+`
+})
+
+total.textContent=grandTotal;
+localStorage.setItem("cart",JSON.stringify(cart));
+
+}
+    function increaseQuantity(id){
+    const product = cart.find(item => item.id === id);
+    if(product){
+        product.quantity++;
+    }
+
+    renderCart();
+
+}
+
+    function decreaseQuantity(id){
+        const product = cart.find(item => item.id === id)
+        if(!product){
+            return
+        }if(product.quantity>1){
+            product.quantity--
+        }else{
+            cart = cart.filter(item=> item.id !==id)
+        }
+
+        renderCart()
+    }
+
+    function removeItem(id){
+        cart = cart.filter(item => item.id !== id)
+
+       renderCart()
+    }
+
+    clearCart.addEventListener("click", ()=>{
+        cart = []
+        renderCart()
+    })
+
+
+
+
+
+</script>
+</body>
+</html>
