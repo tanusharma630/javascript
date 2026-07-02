@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+  body{
+    background-color: darkslateblue;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+
+.Container{
+    width:430px;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.35);
+    transition:.4s;
+}
+
+.Container:hover{
+    transform:translateY(-8px);
+    box-shadow:0 25px 60px rgba(0,0,0,.45);
+}
+
+.section{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+h1{
+    color:white;
+    font-size:34px;
+    margin-bottom:10px;
+    letter-spacing:1px;
+}
+
+input{
+    width:100%;
+    padding:18px;
+    border-radius:15px;
+    border:2px solid transparent;
+    background:rgba(255,255,255,.18);
+    color:white;
+    font-size:17px;
+    outline:none;
+    transition:.35s;
+}
+
+input::placeholder{
+    color:rgba(255,255,255,.7);
+}
+
+input:hover{
+    background:rgba(255,255,255,.22);
+}
+
+input:focus{
+    border-color:#7f5af0;
+    background:rgba(255,255,255,.25);
+    box-shadow:0 0 20px rgba(127,90,240,.45);
+    transform:scale(1.02);
+}
+
+.buttons{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-top:10px;
+}
+
+button{
+    flex:1;
+    padding:16px;
+    border:none;
+    border-radius:15px;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(135deg,#7f5af0,#4f46e5);
+    transition:.35s;
+    box-shadow:0 10px 20px rgba(0,0,0,.25);
+}
+
+button:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(127,90,240,.5);
+}
+
+button:active{
+    transform:scale(.96);
+}
+
+.formvalue{
+    width:500px;
+    margin:100px auto;
+    padding:40px;
+    border-radius:25px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.2);
+    color:white;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+    animation:pop .6s ease;
+}
+
+.formvalue h4{
+    margin:18px 0;
+    font-size:22px;
+    font-weight:500;
+    border-bottom:1px solid rgba(255,255,255,.2);
+    padding-bottom:12px;
+}
+
+@keyframes pop{
+
+    from{
+        opacity:0;
+        transform:translateY(40px) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+@media(max-width:500px){
+
+.Container{
+    width:92%;
+    padding:25px;
+}
+
+.buttons{
+    flex-direction:column;
+}
+
+.formvalue{
+    width:92%;
+}
+
+}
+    </style>
+</head>
+<body>
+    <div class="Container">
+    <form class="section" id="myformm">
+        <h1>Course Form</h1>
+        <input type="text" id="name" placeholder="Enter Your Name">
+        <input type="text" id="course" placeholder="Course Name">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="email" placeholder="Email">
+        <div class="buttons">
+        <button id="btn">Submit</button>
+        <button id="fetchdata">Show Data</button>
+        </div>
+    </form>
+    </div>
+
+
+<script>
+    document.getElementById("fetchdata").addEventListener("click", () => {
+
+    const myformm = JSON.parse(localStorage.getItem("userData"));
+
+    if (!myformm) {
+        alert("No data found!");
+        return;
+    }
+
+    document.body.innerHTML = `
+        <div class="formvalue">
+            <h4>Name: ${myformm.name}</h4>
+            <h4>Email: ${myformm.Email}</h4>
+            <h4>Address: ${myformm.Address}</h4>
+            <h4>Course: ${myformm.course}</h4>
+        </div>`
+})
+
+</script>
+
+</body>
+</html>
