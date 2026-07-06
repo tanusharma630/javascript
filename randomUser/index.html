@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items:center;
+    padding:20px;
+
+    background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+    url("https://i.pinimg.com/736x/37/7d/b6/377db6cea8ba77dc96fa49a4c9e08a15.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+#empty{
+    position:relative;
+    width:500px;
+    padding:35px;
+    border-radius:28px;
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+    0 25px 50px rgba(0,0,0,.4);
+
+    overflow:hidden;
+    transition:.4s;
+}
+
+#empty:hover{
+    transform:translateY(-8px);
+    box-shadow:0 35px 70px rgba(0,0,0,.45);
+}
+
+#empty::before{
+    content:"";
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:#ff5fa2;
+    border-radius:50%;
+    filter:blur(120px);
+    top:-130px;
+    left:-120px;
+    opacity:.5;
+}
+
+#empty::after{
+    content:"";
+    position:absolute;
+    width:260px;
+    height:260px;
+    background:#ffc4dc;
+    border-radius:50%;
+    filter:blur(120px);
+    bottom:-120px;
+    right:-120px;
+    opacity:.45;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    font-size: 50px;
+}
+
+#user-image{
+    display:block;
+    margin:0 auto 35px;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+    object-fit:cover;
+
+    border:5px solid rgba(255,255,255,.9);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.35);
+
+    transition:.4s;
+
+    position:relative;
+    z-index:2;
+}
+
+#user-image:hover{
+    transform:scale(1.08);
+}
+
+.info{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin:18px 0;
+    padding-bottom:12px;
+
+    border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.label{
+    color:#ff2f85;
+    font-size:18px;
+    font-weight:700;
+}
+
+#user-name,
+#user-email,
+#phone,
+#country,
+#city{
+    color:#ffffff;
+    font-size:17px;
+    font-weight:500;
+    text-align:right;
+}
+
+#btn{
+    position:relative;
+    z-index:2;
+
+    margin-top:35px;
+
+    width:100%;
+    height:55px;
+
+    border:none;
+    border-radius:50px;
+
+    background:#111;
+    color:#fff;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,.3);
+}
+
+#btn:hover{
+    background:#ff2f85;
+    transform:translateY(-4px);
+    box-shadow:0 20px 35px rgba(255,47,133,.45);
+}
+
+@media(max-width:650px){
+
+    #empty{
+        width:100%;
+        padding:25px;
+    }
+
+    #user-image{
+        width:120px;
+        height:120px;
+    }
+
+    .info{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
+
+    .label{
+        font-size:16px;
+    }
+
+    #user-name,
+    #user-email,
+    #phone,
+    #country,
+    #city{
+        font-size:15px;
+        text-align:left;
+    }
+}
+    </style>
+</head>
+<body>
+    <h1>Random User Finder</h1>
+    <div id="empty">
+
+    <img id="user-image" alt="loading...">
+
+    <div class="info">
+        <span class="label">👤 Name</span>
+        <span id="user-name"></span>
+    </div>
+
+    <div class="info">
+        <span class="label">📧 Email</span>
+        <span id="user-email"></span>
+    </div>
+
+    <div class="info">
+        <span class="label">📞 Phone</span>
+        <span id="phone"></span>
+    </div>
+
+    <div class="info">
+        <span class="label">🌍 Country</span>
+        <span id="country"></span>
+    </div>
+
+    <div class="info">
+        <span class="label">🏙️ City</span>
+        <span id="city"></span>
+    </div>
+
+    <button id="btn">Change User</button>
+
+</div>
+
+
+    <script src="hey.js"></script>
+</body>
+</html>
