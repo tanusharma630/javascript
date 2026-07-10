@@ -85,12 +85,9 @@ function loadSong(index){
 function playSong(){
 
     audio.play();
-
     playIcon.style.display="none";
     pauseIcon.style.display="block";
-
     cover.classList.add("playing");
-
 }
 
 
@@ -99,37 +96,26 @@ function pauseSong(){
     audio.pause();
     playIcon.style.display="block";
     pauseIcon.style.display="none";
-
     cover.classList.remove("playing");
-
 }
 
 
 playBtn.addEventListener("click",()=>{
 
     if(audio.paused){
-
         playSong();
-
     }else{
-
         pauseSong();
-
     }
-
 });
 
 
 nextBtn.addEventListener("click",()=>{
-
     currentSong++;
-
     if(currentSong>=songs.length){
-
         currentSong=0;
 
     }
-
     loadSong(currentSong);
     playSong();
 
@@ -137,13 +123,10 @@ nextBtn.addEventListener("click",()=>{
 
 
 prevBtn.addEventListener("click",()=>{
-
     currentSong--;
 
     if(currentSong<0){
-
         currentSong=songs.length-1;
-
     }
 
     loadSong(currentSong);
@@ -169,23 +152,19 @@ audio.addEventListener("timeupdate",()=>{
 
 
 progress.addEventListener("input",()=>{
-
     audio.currentTime=progress.value;
-
 });
 
 
 function formatTime(time){
 
     if(isNaN(time)) return "0:00";
-
     let min=Math.floor(time/60);
     let sec=Math.floor(time%60);
 
     if(sec<10){
         sec="0"+sec;
     }
-
     return `${min}:${sec}`;
 
 }
@@ -193,9 +172,7 @@ function formatTime(time){
 audio.volume=0.7;
 
 volumeSlider.addEventListener("input",()=>{
-
     audio.volume=volumeSlider.value;
-
 });
 
 
@@ -215,17 +192,11 @@ songs.forEach((song,index)=>{
     `;
 
     li.addEventListener("click",()=>{
-
         currentSong=index;
-
         loadSong(index);
-
         playSong();
-
     });
-
     playlist.appendChild(li);
-
 });
 
 
