@@ -15,9 +15,10 @@ while(true){
     }else if(choice == 4){
         console.log("Exit")
         break
+    }else if(choice == null || choice == Number(items)){
+        console.log("First add any item")
     }else{
         console.log("Invalid Input")
 
     }
-
 }
